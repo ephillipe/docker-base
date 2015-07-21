@@ -1,5 +1,5 @@
 TAG=$(shell git rev-parse --abbrev-ref HEAD)
-IMAGE=ubuntu:$(TAG)
+IMAGE=docker-base:$(TAG)
 REPOSITORY=ephillipe/$(IMAGE)
 
 build:
@@ -7,8 +7,8 @@ build:
 release: build push
 
 push:
-	docker tag $(TAG) $(IMAGE)
-	docker push $(IMAGE)
+	docker tag $(TAG) $(REPOSITORY)
+	docker push $(REPOSITORY)
 
 bash:
 	docker run -it $(IMAGE) bash
