@@ -7,7 +7,8 @@ RUN echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache \
  && rm /etc/cron.weekly/fstrim \
  && rm /etc/cron.daily/apt \
  && rm /etc/cron.daily/dpkg \
- && rm /etc/cron.daily/passwd
+ && rm /etc/cron.daily/passwd \
+ && apt-get install aptitude -y -q
 
 COPY apt-install /usr/local/bin/
 COPY sources.list /etc/apt/
